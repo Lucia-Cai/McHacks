@@ -37,7 +37,7 @@ Question 1:
 Answer 1: 
 The text: ''' + input_text
 
-p = "write the first 10 digits of pi"
+
 
 # m = comp(prompt, MaxToken=500, outputs=1)
 # print(m)
