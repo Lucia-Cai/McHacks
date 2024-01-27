@@ -1,6 +1,7 @@
 # menu
 
 import flashcards_database
+from flashcards_database import *
 
 # if you want to create flashcard use: add_flashcard(connection, 'question', 'answer')
 
@@ -48,4 +49,13 @@ def ask_questions():
     # when we're done
     connection.close()
 
+
+def menu():
+    connection = flashcards_database.connect()
+    connection.execute('DROP TABLE IF EXISTS flashcards')
+    flashcards_database.create_tables(connection)
+
+    print(get_all_flashcards(connection))
+
+menu()
 
