@@ -11,12 +11,13 @@ def ask_wrong_flashcards(connection, wrong_flashcards):
         # question is question[0] ans asnwer is question [1]
 
         if question_right: # put condition here
-            update_answer(connection, question, 1)
+            update_answer(connection, question, True)
         else:
-            update_answer(connection, question, 0)
+            update_answer(connection, question, False)
     
     connection.commit()
 
+# ask questions from a specific table from the database flashcards_database
 def ask_questions():
     connection = flashcards_database.connect()
     flashcards_database.create_tables(connection)
@@ -30,9 +31,9 @@ def ask_questions():
         # question is question[0] ans asnwer is question [1]
 
         if question_right: # put condition here
-            update_answer(connection, question, 1)
+            update_answer(connection, question, True)
         else:
-            update_answer(connection, question, 0)
+            update_answer(connection, question, False)
     
     connection.commit()
         
