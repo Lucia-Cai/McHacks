@@ -1,6 +1,6 @@
 # menu
 
-from gptAPI.chatgptAPI import *
+from chatgptAPI import *
 
 
 import flashcards_database
@@ -54,6 +54,9 @@ def ask_questions(table_name):
     connection.close()
 
 
+
+# test for database
+
 def menu():
     connection = flashcards_database.connect()
     connection.execute('DROP TABLE IF EXISTS flashcards')
@@ -79,13 +82,8 @@ def menu():
     a = text_to_dict(m)
 
 
-    dict_to_flashcards(connection, dict)
+    dict_to_flashcards(connection, 'flashcards', a)
 
     print(get_all_flashcards(connection, 'flashcards'))
 
-
-
-
-
-menu()
 

@@ -30,9 +30,9 @@ def add_flashcard(connection, table_name, question, answer, result = False):
     with connection:
         connection.execute(f'INSERT INTO {table_name} (question, answer, result) VALUES (?, ?, ?);', (question, answer, result))
 
-def dict_to_flashcards(connection, dict):
-    for question, answer in enumerate(dict.items()):
-        add_flashcard(connection, question, answer)
+def dict_to_flashcards(connection, table_name, dict):
+    for question, answer in dict.items():
+        add_flashcard(connection, table_name, question, answer)
 
 def get_all_flashcards(connection, table_name):
     with connection:
