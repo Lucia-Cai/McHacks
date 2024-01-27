@@ -59,16 +59,15 @@ Question 5: What are some potential medicinal properties of mushrooms?
 Answer 5: Some mushrooms, such as reishi and shiitake, are known for their potential immune-boosting, antiviral, and cholesterol-lowering properties, highlighting their potential applications in human health and well-being.'''
 
 
-
-
-a = text_to_dict(m)
-print(a)
-# returns a dict 
-# {'What is the mycelium?': 'The mycelium is a network of thread-like structures hidden beneath the substrate, such as soil or wood, and is the true essence of the fungus.', 
-# 'How do mushrooms reproduce?': 'Mushrooms reproduce through the production and dispersal of spores, which are released from the gills or pores under the mushroom cap.', 
-# 'What is mycorrhizae?': 'Mycorrhizae is the symbiotic relationship between mushrooms and plants, in which the fungus aids the plant in nutrient absorption and the plant provides carbohydrates to the fungus.', 
-# 'What is the ecological importance of mushrooms as decomposers?': 'Mushrooms break down complex organic compounds in dead plant and animal material, releasing essential nutrients back into the environment and contributing to nutrient cycling in ecosystems.', 
-# 'What are some potential medicinal properties of mushrooms?': 'Some mushrooms, such as reishi and shiitake, are known for their potential immune-boosting, antiviral, and cholesterol-lowering properties, highlighting their potential applications in human health and well-being.'}
+if __name__ == "__main__":
+	a = text_to_dict(m)
+	print(a)
+	# returns a dict 
+	# {'What is the mycelium?': 'The mycelium is a network of thread-like structures hidden beneath the substrate, such as soil or wood, and is the true essence of the fungus.', 
+	# 'How do mushrooms reproduce?': 'Mushrooms reproduce through the production and dispersal of spores, which are released from the gills or pores under the mushroom cap.', 
+	# 'What is mycorrhizae?': 'Mycorrhizae is the symbiotic relationship between mushrooms and plants, in which the fungus aids the plant in nutrient absorption and the plant provides carbohydrates to the fungus.', 
+	# 'What is the ecological importance of mushrooms as decomposers?': 'Mushrooms break down complex organic compounds in dead plant and animal material, releasing essential nutrients back into the environment and contributing to nutrient cycling in ecosystems.', 
+	# 'What are some potential medicinal properties of mushrooms?': 'Some mushrooms, such as reishi and shiitake, are known for their potential immune-boosting, antiviral, and cholesterol-lowering properties, highlighting their potential applications in human health and well-being.'}
 
 
 
