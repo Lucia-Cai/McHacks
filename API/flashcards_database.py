@@ -24,6 +24,7 @@ def create_tables(connection, table_name):
     with connection:
         connection.execute(f'CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, question TEXT, answer TEXT, result BOOLEAN);')
 
+
 def add_flashcard(connection, table_name, question, answer, result = False):
     with connection:
         connection.execute(f'INSERT INTO {table_name} (question, answer, result) VALUES (?, ?, ?);', (question, answer, result))

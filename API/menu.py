@@ -59,7 +59,7 @@ def ask_questions(table_name):
 
 def menu():
     connection = flashcards_database.connect()
-    connection.execute('DROP TABLE IF EXISTS flashcards')
+    create_tables(connection, 'flashcards')
     flashcards_database.create_tables(connection, 'flashcards')
 
 

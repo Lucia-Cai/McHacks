@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import sqlite3
+from API.flashcards_database import *
 
 app = Flask(__name__)
 DB_FILE = 'flashcards_database.db'
@@ -11,7 +12,7 @@ def connect():
 # ... (Include the rest of your functions here)
 
 @app.route('/flashcards', methods=['GET'])
-def get_all_flashcards():
+def get_all_flashcards_flask():
     connection = connect()
     flashcards = get_all_flashcards(connection, 'flashcards')
     connection.close()
@@ -19,7 +20,7 @@ def get_all_flashcards():
 
 
 @app.route('/flashcards', methods=['POST'])
-def add_flashcard():
+def add_flashcard_flask():
     data = request.json
     connection = connect()
     add_flashcard(connection, 'flashcards', data['question'], data['answer'])
