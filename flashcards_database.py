@@ -1,5 +1,3 @@
-#flashcards database
-
 import sqlite3
 
 # table_name = 'flashcards'
