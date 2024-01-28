@@ -1,29 +1,33 @@
 from flask import Flask, request, jsonify
+import sqlite3
 
 app = Flask(__name__)
+DB_FILE = 'flashcards_database.db'
 
-@app.route('/api', methods = ['GET'])
-def get_data():
-    data = {'message': 'Hello, this is flask bitch!'}
-    return jsonify(data)
+# Function to connect to the SQLite database
+def connect():
+    return sqlite3.connect(DB_FILE)
 
+# ... (Include the rest of your functions here)
 
-
-
-@app.route('/message', methods = ['GET'])
-def get_msg():
-    d = {}
-    input_msg = str(request.args['query'])
-    d['output'] = input_msg
-    return jsonify(d)
-
+@app.route('/flashcards', methods=['GET'])
+def get_all_flashcards():
+    connection = connect()
+    flashcards = get_all_flashcards(connection, 'flashcards')
+    connection.close()
+    return jsonify(flashcards)
 
 
+@app.route('/flashcards', methods=['POST'])
+def add_flashcard():
+    data = request.json
+    connection = connect()
+    add_flashcard(connection, 'flashcards', data['question'], data['answer'])
+    connection.close()
+    return jsonify({'message': 'Flashcard added successfully'})
 
-if __name__ == "__main__":
+
+
+
+if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
-
