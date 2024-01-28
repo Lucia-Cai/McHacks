@@ -1,34 +1,31 @@
-from flask import Flask, request, jsonify
-import sqlite3
-from API.flashcards_database import *
+from flask import Flask, jsonify, request
+import flashcards_database
+from chatgptAPI import *
+from pdf import *
 
 app = Flask(__name__)
-DB_FILE = 'flashcards_database.db'
 
-# Function to connect to the SQLite database
-def connect():
-    return sqlite3.connect(DB_FILE)
-
-# ... (Include the rest of your functions here)
-
-@app.route('/flashcards', methods=['GET'])
-def get_all_flashcards_flask():
-    connection = connect()
-    flashcards = get_all_flashcards(connection, 'flashcards')
-    connection.close()
-    return jsonify(flashcards)
+@app.route('/api/flashcards', methods=['GET'])
+def get_all_flashcards():
+    connection = flashcards_database.connect()
+    flashcards = flashcards_database.get_all_flashcards(connection, 'flashcards')
+    return jsonify({'flashcards': flashcards})
 
 
-@app.route('/flashcards', methods=['POST'])
-def add_flashcard_flask():
+@app.route('/api/add_flashcard', methods=['POST'])
+def add_flashcard():
     data = request.json
-    connection = connect()
-    add_flashcard(connection, 'flashcards', data['question'], data['answer'])
-    connection.close()
+    question = data['question']
+    answer = data['answer']
+    connection = flashcards_database.connect()
+    flashcards_database.add_flashcard(connection, 'flashcards', question, answer)
     return jsonify({'message': 'Flashcard added successfully'})
 
-
-
+# Add more routes for other functions as needed
 
 if __name__ == '__main__':
+    connection = flashcards_database.connect()
+    flashcards_database.create_tables(connection, 'flashcards')
+    a = text_to_dict(m)
+    flashcards_database.dict_to_flashcards(connection, 'flashcards', a)
     app.run(debug=True)
